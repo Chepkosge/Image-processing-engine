@@ -1,8 +1,10 @@
 # Image Processing Engine
 
-Image Processing Engine is a small C program for applying simple image edits — currently supports:
-- Adjusting image brightness
-- Applying a blur filter
+Image Processing Engine that creates a glow effect on an image.
+
+# Implementation details
+The program creates a glow effect on an image by identifying pixels whose brightness exceeds a given threshold, then creating a blur filter by computing new values for each color component (red, blue, green) of those pixels by finding the average value of the color component from the value of the color component of the pixels around the given pixel. The number of pixels used to compute this average(new value) depends on the given box size. For example, given a box size of 25, 25 pixels(including the pixel in question and the 24 around it) are used to compute the new/average value of the color component. The blur filter is then superposed on the original picture by adding the new value of each color component to the original.
+The number of threads to be used as taken as input through stdin and depending on the given number, the image is divided horizontally into N strips, where N is the number of threads to be used.
 
 # Features
 
@@ -14,41 +16,20 @@ Image Processing Engine is a small C program for applying simple image edits —
 
 - C compiler (gcc/clang)
 - Make (optional)
-- One of the following image I/O options (choose whichever your project uses; install if needed):
-  - stb_image.h + stb_image_write.h (single-header public-domain/ISC-style libs)
-  - libpng / libjpeg (development headers)
-- math library (libm) if your code uses math functions
-
----
 
 ## Build
 
-Below are example build instructions. Update the commands to match your repository layout and chosen image I/O implementation.
+Option A — Use GNU compiler:
+run:
+gcc -g -o glow_multithreaded read_ppm.c write_ppm.c glow_multithreaded.c -lpthreads -lm
 
-Option A — single-header (stb):
-1. Place `stb_image.h` and `stb_image_write.h` in the project (or vendor them).
-2. Build:
-   gcc -O2 -Wall -o imageproc src/*.c -lm
-
-Option B — libpng/libjpeg (pkg-config):
-1. Install development packages (example on Debian/Ubuntu):
-   sudo apt-get install libpng-dev libjpeg-dev
-2. Build:
-   gcc -O2 -Wall -o imageproc src/*.c `pkg-config --cflags --libs libpng libjpeg` -lm
-
-If you use a Makefile, run:
-   make
-
-Adjust source paths and flags to match the repository.
-
----
+Option B — Using Makefile:
+Use the project's Makefile by running:
+make
 
 ## Usage
-
-Replace `imageproc` with your executable name if different.
-
-Basic syntax:
-   ./imageproc [options] <input-file> <output-file>
+To run, run the following command:
+./glow_multithreaded -N <NumThreads> -t <brightness threshold> -b <box blur size> -f <ppmfile>
 
 Common options (update to match your program's CLI):
 - --brightness <value>    Adjust brightness by percentage or absolute value. Example: `--brightness 20` (brighten by 20%), `--brightness -10` (darken by 10)

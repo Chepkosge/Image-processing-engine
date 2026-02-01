@@ -1,24 +1,14 @@
 # Image Processing Engine
 
-Program that adjusts blur and brightness of an image.
-
----
-
-## Overview
-
 Image Processing Engine is a small C program for applying simple image edits — currently supports:
 - Adjusting image brightness
 - Applying a blur filter
 
-This README is a template you can drop into the repository. If your code uses different command-line flags, filenames, or dependencies, replace the placeholders below with the appropriate values.
-
----
-
-## Features
+# Features
 
 - Brightness adjustment (brighten or darken)
 - Gaussian/box blur (configurable radius)
-- Works with common image formats (PNG, JPEG) when linked with the appropriate image I/O library
+- Works with common image formats (PNG, JPEG) when converted to .ppm using online tools e.g. [CloudConvert] or [FreeConvert] or desktop tools e.g. Pixillion or Netpbm
 
 ---
 

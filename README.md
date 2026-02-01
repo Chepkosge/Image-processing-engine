@@ -10,8 +10,6 @@ Image Processing Engine is a small C program for applying simple image edits —
 - Gaussian/box blur (configurable radius)
 - Works with common image formats (PNG, JPEG) when converted to .ppm using online tools e.g. [CloudConvert](https://cloudconvert.com/ppm-converter) or [FreeConvert](https://www.freeconvert.com/ppm-converter) or desktop tools e.g. Pixillion or Netpbm
 
----
-
 ## Requirements
 
 - C compiler (gcc/clang)

@@ -207,7 +207,7 @@ int main(int argc, char* argv[])
     pthread_join(thread_array[i], NULL);
   }
   //overwrite earth.ppm with the glowing version
-  write_ppm_2d("earth3.ppm", glow_pixels, width, height);
+  write_ppm_2d(filename, glow_pixels, width, height);
 
   for(int i = 0; i < height; i++){
     free(pixels[i]);

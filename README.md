@@ -27,7 +27,7 @@ make
 
 ## Usage
 To run, run the following command:
-./glow_multithreaded -N &lt NumThreads &gt -t &lt brightness threshold &gt -b &lt box blur size &gt -f &lt ppmfile &gt
+./glow_multithreaded -N &lt;NumThreads &gt; -t &lt;brightness threshold&gt; -b &lt;box blur size&gt; -f &lt;ppmfile&gt;
 
 Examples:
 - To create a glow effect on an image saved in a file named 'earth.ppm" using 8 threads, a threshold of 200, and a box size of 17:
